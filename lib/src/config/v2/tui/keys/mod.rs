@@ -364,6 +364,9 @@ pub struct KeysPlayer {
 
     /// Key to save the current playlist as a "m3u" playlist
     pub save_playlist: KeyBinding,
+
+    /// Key to seek to absolute 0th position of song
+    pub restart: KeyBinding,
 }
 
 impl Default for KeysPlayer {
@@ -378,6 +381,7 @@ impl Default for KeysPlayer {
             .into(),
             volume_up: tuievents::Key::Char('+').into(),
             volume_down: tuievents::Key::Char('-').into(),
+            restart: tuievents::Key::Char('0').into(),
             seek_forward: tuievents::Key::Char('f').into(),
             seek_backward: tuievents::Key::Char('b').into(),
             speed_up: tuievents::KeyEvent::new(
@@ -412,6 +416,7 @@ impl CheckConflict for KeysPlayer {
             (&self.previous_track, "previous_track"),
             (&self.volume_up, "volume_up"),
             (&self.volume_down, "volume_down"),
+            (&self.restart, "restart"),
             (&self.seek_forward, "seek_forward"),
             (&self.seek_backward, "seek_backward"),
             (&self.speed_up, "speed_up"),
@@ -1918,6 +1923,7 @@ mod v1_interop {
                     previous_track: value.global_player_previous.into(),
                     volume_up: value.global_player_volume_plus_2.into(),
                     volume_down: player_volume_down_key,
+                    restart: value.global_restart.into(),
                     seek_forward: value.global_player_seek_forward.into(),
                     seek_backward: value.global_player_seek_backward.into(),
                     speed_up: value.global_player_speed_up.into(),
@@ -2050,6 +2056,7 @@ mod v1_interop {
                     tuievents::KeyModifiers::NONE,
                 )
                 .into(),
+                restart: tuievents::Key::Char('0').into(),
                 seek_forward: tuievents::Key::Char('f').into(),
                 seek_backward: tuievents::Key::Char('b').into(),
                 speed_up: tuievents::KeyEvent::new(
@@ -2287,6 +2294,7 @@ mod v1_interop {
                     tuievents::KeyModifiers::NONE,
                 )
                 .into(),
+                restart: tuievents::Key::Char('0').into(),
                 seek_forward: tuievents::Key::Char('f').into(),
                 seek_backward: tuievents::Key::Char('b').into(),
                 speed_up: tuievents::KeyEvent::new(

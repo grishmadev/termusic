@@ -284,6 +284,7 @@ impl Model {
             IdKey::Global(IdKeyGlobal::PlayerPrevious) => {
                 keys.player_keys.previous_track = binding;
             }
+            IdKey::Global(IdKeyGlobal::PlayerRestart) => keys.player_keys.restart = binding,
             IdKey::Global(IdKeyGlobal::PlayerSeekForward) => {
                 keys.player_keys.seek_forward = binding;
             }

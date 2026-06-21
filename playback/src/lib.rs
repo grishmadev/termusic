@@ -127,6 +127,7 @@ pub enum PlayerCmd {
     Quit(&'static str),
     ReloadConfig,
     ReloadPlaylist,
+    Restart,
     SeekBackward,
     SeekForward,
     SkipNext,
@@ -671,6 +672,13 @@ impl GeneralPlayer {
                 self.start_play(false);
             }
         }
+    }
+
+    /// # Panics
+    ///
+    /// if the underlying "seek" returns a error (which current never happens)
+    pub fn restart(&mut self) {
+        self.seek_to(Duration::from_secs(0));
     }
 
     /// # Panics

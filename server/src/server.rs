@@ -389,6 +389,10 @@ fn player_loop(
             PlayerCmd::ReloadPlaylist => {
                 player.playlist.write().reload_tracks().ok();
             }
+            PlayerCmd::Restart => {
+                info!("pressed 01");
+                player.seek_relative(true);
+            }
             PlayerCmd::SeekBackward => {
                 // TODO: do seek callback for faster progress updates?
                 player.seek_relative(false);

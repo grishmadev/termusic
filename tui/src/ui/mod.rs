@@ -6,6 +6,7 @@ use tonic::transport::Channel;
 use tuirealm::application::PollStrategy;
 
 use crate::CombinedSettings;
+use crate::ui::msg::PlayerMsg;
 use crate::ui::server_req_actor::ServerRequestActor;
 use model::Model;
 use music_player_client::Playback;
@@ -65,6 +66,9 @@ impl UI {
                     // NOTE: redraw if at least one msg has been processed
                     self.model.redraw = true;
                     for msg in messages {
+                        if let msg::Msg::Player(PlayerMsg::Restart) = msg {
+                            println!("restart clicked");
+                        };
                         self.model.update(msg);
                     }
                 }

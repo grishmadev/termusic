@@ -64,6 +64,10 @@ impl AppComponent<Msg, UserEvent> for GlobalListener {
             Event::Keyboard(keyevent) if keyevent == keys.select_view_keys.open_help.get() => {
                 Some(Msg::HelpPopup(HelpPopupMsg::Show))
             }
+            Event::Keyboard(keyevent) if keyevent == keys.player_keys.restart.get() => {
+                panic!("pressed 0");
+                Some(Msg::Player(PlayerMsg::Restart))
+            }
             Event::Keyboard(keyevent) if keyevent == keys.player_keys.seek_forward.get() => {
                 Some(Msg::Player(PlayerMsg::SeekForward))
             }

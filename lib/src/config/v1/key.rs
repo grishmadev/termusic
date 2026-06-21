@@ -20,6 +20,7 @@ pub struct Keys {
     pub global_player_volume_minus_1: BindingForEvent,
     pub global_player_volume_minus_2: BindingForEvent,
     pub global_help: BindingForEvent,
+    pub global_restart: BindingForEvent,
     pub global_player_seek_forward: BindingForEvent,
     pub global_player_seek_backward: BindingForEvent,
     pub global_lyric_adjust_forward: BindingForEvent,
@@ -94,6 +95,8 @@ mod key_serde_code {
         Reverse,
         /// Stop media key.
         Stop,
+        /// Restart media key.
+        RestartTrack,
         /// Fast-forward media key.
         FastForward,
         /// Rewind media key.
@@ -128,6 +131,7 @@ mod key_serde_code {
                 MediaKeyCode::LowerVolume => MediaKeyCodeSerde::LowerVolume,
                 MediaKeyCode::RaiseVolume => MediaKeyCodeSerde::RaiseVolume,
                 MediaKeyCode::MuteVolume => MediaKeyCodeSerde::MuteVolume,
+                MediaKeyCode::RestartTrack => MediaKeyCodeSerde::RestartTrack,
             }
         }
     }
@@ -148,6 +152,7 @@ mod key_serde_code {
                 MediaKeyCodeSerde::LowerVolume => MediaKeyCode::LowerVolume,
                 MediaKeyCodeSerde::RaiseVolume => MediaKeyCode::RaiseVolume,
                 MediaKeyCodeSerde::MuteVolume => MediaKeyCode::MuteVolume,
+                MediaKeyCodeSerde::RestartTrack => MediaKeyCode::RestartTrack,
             }
         }
     }
@@ -430,6 +435,10 @@ impl Default for Keys {
             },
             global_player_toggle_pause: BindingForEvent {
                 code: Key::Char(' '),
+                modifier: KeyModifiers::NONE,
+            },
+            global_restart: BindingForEvent {
+                code: Key::Char('0'),
                 modifier: KeyModifiers::NONE,
             },
             global_player_next: BindingForEvent {

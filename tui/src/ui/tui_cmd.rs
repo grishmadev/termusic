@@ -10,6 +10,7 @@ pub enum TuiCmd {
     TogglePause,
     // Play,
     // Pause,
+    Restart,
     SeekForward,
     SeekBackward,
     VolumeUp,
@@ -38,7 +39,6 @@ pub enum PlaylistCmd {
     SwapTrack(PlaylistSwapTrack),
     Shuffle,
     RemoveDeletedItems,
-
     /// Re-Request the playlist tracks and state
     #[allow(dead_code)] // replace with "expect" on 1.81 upgrade
     SelfReloadPlaylist,
